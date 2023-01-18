@@ -39,8 +39,6 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-gem 'solidus_auth_devise'
-
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
@@ -76,8 +74,10 @@ gem "truncate_html"
 gem "view_component", "~> 2.46"
 
 group :development, :test do
+  gem 'capistrano'
   gem 'capistrano-rails'
   gem 'capistrano-passenger'
+  gem 'capistrano-rbenv'
   gem "rspec-rails"
   gem "apparition", "~> 0.6.0", github: "twalpole/apparition"
   gem "rails-controller-testing", "~> 1.0.5"
@@ -95,6 +95,3 @@ end
 
 # FIXME: Please remove this line if `solidus_auth_devise` appears anywhere else in the gemfile
 #        or replace it with a simple `gem 'solidus_auth_devise'` otherwise.
-gem 'solidus_auth_devise' unless File.read(__FILE__).lines[__LINE__..-1].grep(/solidus_auth_devise/).any?
-
-gem "solidus_auth_devise"
