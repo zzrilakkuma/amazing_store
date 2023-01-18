@@ -74,6 +74,7 @@ gem "truncate_html"
 gem "view_component", "~> 2.46"
 
 group :development, :test do
+  gem 'mini_racer'
   gem 'capistrano'
   gem 'capistrano-rails'
   gem 'capistrano-passenger'
