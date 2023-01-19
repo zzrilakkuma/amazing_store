@@ -34,7 +34,7 @@ Spree.config do |config|
   # Admin:
 
   # Custom logo for the admin
-  # config.admin_interface_logo = "logo/solidus.svg"
+  config.admin_interface_logo = "galaxy_suzaku"
 
   # Gateway credentials can be configured statically here and referenced from
   # the admin. They can also be fully configured from the admin.
@@ -87,3 +87,34 @@ Spree.user_class = "Spree::LegacyUser"
 
 # Will send the user an email with a link to confirm their account
 Spree::Auth::Config[:confirmable] = false
+
+if Rails.env.production?
+  attachment_config = {
+    s3_credentials: {
+      access_key_id:     ENV['AKIAUGDOCS74ZBGFERE6'],
+      secret_access_key: ENV['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'],
+      bucket:            ENV['amazing-store-bucket']
+    },
+
+    storage:        :s3,
+    s3_headers:     { 'Cache-Control' => 'max-age=31557600' },
+    s3_protocol:    'https',
+    bucket:         ENV['amazing-store-bucket'],
+    url:            ':s3_domain_url',
+
+    styles: {
+      mini:     '48x48>',
+      small:    '100x100>',
+      product:  '240x240>',
+      large:    '600x600>'
+    },
+
+    path:           '/:class/:id/:style/:basename.:extension',
+    default_url:    'noimage/:style.png',
+    default_style:  'product'
+  }
+
+  attachment_config.each do |key, value|
+    Spree::Image.attachment_definitions[:attachment][key.to_sym] = value
+  end
+end

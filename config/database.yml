@@ -27,6 +27,7 @@ test:
 
 production:
   <<: *default
+  url: <%= ENV['postgres://jkmgjrrabboaoo:483ec22b25fe8df005583636f45413a0f13431b0adcf7a321d60831a1c1fef0b@ec2-44-199-143-43.compute-1.amazonaws.com:5432/db0mai642fcvt1'] %>
   username: zzrilakkuma
   password:
   database: 'amazing_store_production'
