@@ -5,27 +5,28 @@
 #   gem "sqlite3"
 #
 default: &default
-  adapter: mysql2
+  adapter: postgresql
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
+
 development:
   <<: *default
-  username: root
+  username: zzrilakkuma
   password:
-  database: db/amazing_store_development
+  database: 'amazing_store_development'
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  username: root
+  username: zzrilakkuma
   password:
-  database: db/amazing_store_test
+  database: 'amazing_store_test'
 
 production:
   <<: *default
-  username: root
+  username: zzrilakkuma
   password:
-  database: db/amazing_store_production
+  database: 'amazing_store_production'
